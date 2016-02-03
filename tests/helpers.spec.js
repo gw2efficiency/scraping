@@ -1,3 +1,4 @@
+/* eslint-env node, mocha */
 const expect = require('chai').expect
 const helpers = require('../src/helpers.js')
 

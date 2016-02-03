@@ -1,3 +1,4 @@
+/* eslint-env node, mocha */
 const expect = require('chai').expect
 const index = require('../src/index.js')
 

@@ -1,3 +1,4 @@
+/* eslint-env node, mocha */
 let requester = require('requester')
 let cheerio = require('cheerio')
 let { buildUrl, matchAll } = require('../helpers.js')
@@ -52,7 +53,7 @@ async function miniSets () {
     let tableRows = $(table).find('tr')
     let lastTitle
     tableRows.each((i, row) => {
-      if (i == 0) {
+      if (i === 0) {
         return
       }
 

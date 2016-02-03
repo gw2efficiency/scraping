@@ -1,9 +1,10 @@
+/* eslint-env node, mocha */
 const expect = require('chai').expect
 const rewire = require('rewire')
 const reqMock = require('requester/mock')
 const wiki = rewire('../../src/pages/wiki-guildwars2.js')
 
-wiki.__set__("requester", reqMock)
+wiki.__set__('requester', reqMock)
 
 describe('wiki-guildwars2', function () {
   this.timeout(10000)
@@ -13,15 +14,15 @@ describe('wiki-guildwars2', function () {
   })
 
   function generateWikiMarkup (content) {
-    return {query: {pages: {123: {title: "Controls", revisions: [{"*": content}]}}}}
+    return {query: {pages: {123: {title: 'Controls', revisions: [{'*': content}]}}}}
   }
 
   function generateWikiImage (url) {
     if (!url) {
-      return {query: {pages: {123: {title: "File:Kudzu.jpg"}}}}
+      return {query: {pages: {123: {title: 'File:Kudzu.jpg'}}}}
     }
 
-    return {query: {pages: {123: {title: "File:Kudzu.jpg", imageinfo: [{url: url}]}}}}
+    return {query: {pages: {123: {title: 'File:Kudzu.jpg', imageinfo: [{url: url}]}}}}
   }
 
   it('gets the correct wiki markup', async () => {
