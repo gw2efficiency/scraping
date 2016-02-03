@@ -23,7 +23,22 @@ don't be shocked at the dependency tree. :wink:)
 ## Usage
 
 ```js
+const scraping = require('gw2api-scraping')
 
+// Get the current offers for claim tickets from wiki.guildwars2.com
+let offers = await scraping.claimTicketOffers()
+
+// Get the dye categories (materials, sets, colors) from wiki.guildwars2.com
+let categories = await scraping.dyeCategories()
+
+// Get the mini set names from wiki.guildwars2.com
+let sets = await scraping.miniSets()
+
+// Get the picture for an item from wiki.guildwars2.com
+let itemPicture = await scraping.itemPicture('Incinerator')
+
+// Get the current dungeon records from gw2-dungeons.net
+let records = await scraping.getDungeonRecords()
 ```
 
 ## Tests
@@ -31,6 +46,9 @@ don't be shocked at the dependency tree. :wink:)
 ```
 npm test
 ```
+
+The tests of this module get executed against the live sites instead of mock objects,
+because the structure of the scraped pages could change at any time without notice.
 
 ## Licence
 
