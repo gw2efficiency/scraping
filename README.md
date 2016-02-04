@@ -39,6 +39,10 @@ let itemPicture = await scraping.itemPicture('Incinerator')
 
 // Get the current dungeon records from gw2-dungeons.net
 let records = await scraping.getDungeonRecords()
+
+// Get the current achievement leaderboard from guildwars2.com
+// Note: this takes ~40 seconds because of heavy rate limiting
+let leaderboard = await scraping.achievementLeaderboard()
 ```
 
 ## Tests

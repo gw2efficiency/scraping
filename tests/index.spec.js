@@ -9,7 +9,8 @@ describe('module', () => {
       'dyeCategories',
       'miniSets',
       'itemPicture',
-      'getDungeonRecords'
+      'getDungeonRecords',
+      'achievementLeaderboard'
     ])
   })
 })
