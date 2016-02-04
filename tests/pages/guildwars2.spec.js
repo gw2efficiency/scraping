@@ -8,7 +8,7 @@ describe('official guildwars2', function () {
 
   it('parses a timestring correctly', () => {
     let time = guildwars2.__get__('parseTimestring')('Since\n            1/20/16 2:01 PM PST')
-    expect(time).to.equal('Wed Jan 20 2016 23:01:00 GMT+0100 (CET)')
+    expect((new Date(time)).getTime()).to.equal((new Date('Wed Jan 20 2016 23:01:00 GMT+0100 (CET)')).getTime())
   })
 
   it('orders an leaderboard array correctly', () => {
