@@ -13,8 +13,7 @@
 npm install https://github.com/gw2efficiency/gw2api-scraping
 ```
 
-This module can be used for Node.js as well as browsers using [Browserify](https://github.com/substack/browserify-handbook#how-node_modules-works). If you
-run it in browsers, not all methods are available due to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).
+This module can be used for Node.js. Theoretically it works in browsers using [Browserify](https://github.com/substack/browserify-handbook#how-node_modules-works), but due to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) most methods are not available.
 
 (Note: Babel gets pulled in as a dependency, because the module is written in ES7 and 
 gets compiled into ES5 during the installation. The Babel code is **not** included in the module, 
@@ -31,7 +30,7 @@ let offers = await scraping.claimTicketOffers()
 // Get the dye categories (materials, sets, colors) from wiki.guildwars2.com
 let categories = await scraping.dyeCategories()
 
-// Get the mini set names from wiki.guildwars2.com
+// Get the minipet set names from wiki.guildwars2.com
 let sets = await scraping.miniSets()
 
 // Get the picture for an item from wiki.guildwars2.com
