@@ -1,7 +1,7 @@
 # gw2api-scraping
 
-[![Travis](https://img.shields.io/travis/gw2efficiency/gw2api-scraping.svg?style=flat-square)](https://travis-ci.org/gw2efficiency/gw2api-scraping)
-[![Coveralls](https://img.shields.io/coveralls/gw2efficiency/gw2api-scraping/master.svg?style=flat-square)](https://coveralls.io/github/gw2efficiency/gw2api-scraping?branch=master)
+[![Build Status](https://img.shields.io/travis/gw2efficiency/gw2api-scraping.svg?style=flat-square)](https://travis-ci.org/gw2efficiency/gw2api-scraping)
+[![Coverage Status](https://img.shields.io/codecov/c/github/gw2efficiency/gw2api-scraping/master.svg?style=flat-square)](https://codecov.io/github/gw2efficiency/gw2api-scraping)
 
 > Scraping unofficial sites for information the API can't provide.
 
