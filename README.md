@@ -42,6 +42,9 @@ let records = await scraping.getDungeonRecords()
 // Get the current achievement leaderboard from guildwars2.com
 // Note: this takes ~40 seconds because of heavy rate limiting
 let leaderboard = await scraping.achievementLeaderboard()
+
+// Get the gem price history from gw2spidy.com
+let prices = await scraping.gemPriceHistory()
 ```
 
 ## Tests

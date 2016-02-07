@@ -10,7 +10,8 @@ describe('module', () => {
       'miniSets',
       'itemPicture',
       'getDungeonRecords',
-      'achievementLeaderboard'
+      'achievementLeaderboard',
+      'gemPriceHistory'
     ])
   })
 })
