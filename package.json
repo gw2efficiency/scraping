@@ -2,9 +2,9 @@
   "name": "gw2api-scraping",
   "version": "1.0.0",
   "description": "Scraping unofficial sites for information the API can't provide.",
-  "main": "./build/server.js",
+  "main": "./build/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel src/ -d build/",
+    "postinstall": "./node_modules/.bin/babel src/ -d build/",
     "test": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/.bin/isparta cover --include-all-sources ./node_modules/.bin/_mocha -- tests/ --recursive && node node_modules/snazzy/bin/cmd.js"
   },
   "author": "queicherius@gmail.com",
