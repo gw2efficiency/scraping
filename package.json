@@ -1,5 +1,5 @@
 {
-  "name": "gw2-api.com",
+  "name": "gw2api-scraping",
   "version": "1.0.0",
   "description": "Scraping unofficial sites for information the API can't provide.",
   "main": "./build/server.js",
