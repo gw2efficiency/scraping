@@ -1,4 +1,4 @@
-const requester = require('requester')
+const requester = require('gw2e-requester')
 
 // Get the gem price history
 async function gemPriceHistory () {

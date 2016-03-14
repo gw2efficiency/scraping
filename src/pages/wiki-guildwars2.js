@@ -1,5 +1,5 @@
 /* eslint-env node, mocha */
-let requester = require('requester')
+let requester = require('gw2e-requester')
 let cheerio = require('cheerio')
 let { buildUrl, matchAll } = require('../helpers.js')
 

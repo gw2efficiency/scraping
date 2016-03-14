@@ -1,13 +1,13 @@
 /* eslint-env node, mocha */
 const expect = require('chai').expect
 const rewire = require('rewire')
-const reqMock = require('requester/mock')
+const reqMock = require('gw2e-requester/mock')
 const wiki = rewire('../../src/pages/wiki-guildwars2.js')
 
 wiki.__set__('requester', reqMock)
 
 describe('wiki-guildwars2', function () {
-  this.timeout(10000)
+  this.timeout(20000)
   beforeEach(() => {
     reqMock.enableMocking(false)
     reqMock.reset()

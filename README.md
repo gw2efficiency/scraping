@@ -5,24 +5,19 @@
 
 > Scraping unofficial sites for information the API can't provide.
 
-**:bomb: NOTE: This module is still heavily in development. Please don't use it yet.**
-
 ## Install
 
 ```
-npm install https://github.com/gw2efficiency/gw2api-scraping
+npm install gw2e-gw2api-scraping
 ```
 
 This module can be used for Node.js. Theoretically it works in browsers using [Browserify](https://github.com/substack/browserify-handbook#how-node_modules-works), but due to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) most methods are not available.
-
-(Note: Babel gets pulled in as a dependency, because the module is written in ES7 and 
-gets compiled into ES5 during the installation. The Babel code is **not** included in the module, 
-don't be shocked at the dependency tree. :wink:)
+Requires the [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) to work.
 
 ## Usage
 
 ```js
-const scraping = require('gw2api-scraping')
+const scraping = require('gw2e-gw2api-scraping')
 
 // Get the current offers for claim tickets from wiki.guildwars2.com
 let offers = await scraping.claimTicketOffers()

@@ -1,4 +1,4 @@
-const requester = require('requester')
+const requester = require('gw2e-requester')
 const { buildQueryString } = require('../helpers.js')
 
 // Get the current record times for dungeon runs

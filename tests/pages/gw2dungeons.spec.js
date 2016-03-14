@@ -1,13 +1,13 @@
 /* eslint-env node, mocha */
 const expect = require('chai').expect
 const rewire = require('rewire')
-const reqMock = require('requester/mock')
+const reqMock = require('gw2e-requester/mock')
 const gw2dungeons = rewire('../../src/pages/gw2dungeons.js')
 
 gw2dungeons.__set__('requester', reqMock)
 
 describe('gw2dungeons', function () {
-  this.timeout(10000)
+  this.timeout(20000)
   beforeEach(() => {
     reqMock.enableMocking(false)
   })

@@ -1,4 +1,4 @@
-const requester = require('requester')
+const requester = require('gw2e-requester')
 const cheerio = require('cheerio')
 
 // Get the total achievement leaderboard (top 2000)
