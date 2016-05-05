@@ -14,7 +14,8 @@ npm install gw2e-gw2api-scraping
 ```
 
 This module can be used for Node.js. Theoretically it works in browsers using [Browserify](https://github.com/substack/browserify-handbook#how-node_modules-works), but due to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) most methods are not available.
-Requires the [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) to work.
+
+**Requires the [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) to work.**
 
 ## Usage
 
