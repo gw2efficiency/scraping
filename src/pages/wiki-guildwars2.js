@@ -6,8 +6,15 @@ let { buildUrl, matchAll } = require('../helpers.js')
 // Get the current claim ticket offers
 async function claimTicketOffers () {
   let page = await getWikiMarkup('Black Lion Weapons Specialist (The Vaults)')
+
+  // We only want the items after the first heading, since the rest of the
+  // items are "currently not available"
+  let splitRegex = /\n==[^=]*==/gi
+  let currentlyAvailable = page.split(splitRegex)[1]
+
+  // Find all items sold for black lion tickets with their costs
   let regex = /item *= *([^|]*?) *\| *cost *= *([\d]*) *Black Lion Claim Ticket(?! Scrap)/gi
-  let matches = matchAll(regex, page)
+  let matches = matchAll(regex, currentlyAvailable)
   let map = {}
   matches.map(x => map[x[1]] = parseInt(x[2], 10))
   return map
