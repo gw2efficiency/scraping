@@ -1,5 +1,20 @@
 const requester = require('gw2e-requester')
-const { buildQueryString } = require('../helpers.js')
+const {buildQueryString} = require('../helpers.js')
+
+const whitelist = [
+  'Spirit Vale',
+  'Salvation Pass',
+  'Stronghold of the Faithful',
+  'Fractals of the Mists',
+  'Ascalonian Catacombs',
+  'Caudecus\'s Manor',
+  'Twilight Arbor',
+  'Sorrow\'s Embrace',
+  'Citadel of Flame',
+  'Honor of the Waves',
+  'Crucible of Eternity',
+  'The Ruined City of Arah'
+]
 
 // Get the current record times for dungeon runs
 async function getDungeonRecords () {
@@ -31,11 +46,28 @@ async function getDungeonRecords () {
       : defaultPath
   })
 
-  return records
+  return filterRecords(records)
+}
+
+// Filter an object by key
+function filterRecords (obj) {
+  let result = {}
+
+  for (var key in obj) {
+    if (whitelist.indexOf(key) !== -1) {
+      result[key] = obj[key]
+    }
+  }
+
+  return result
 }
 
 // Transform a record from gw2dungeons to our format
 function transformRecord (record) {
+  if (record.groups.length == 0) {
+    record.groups = [{name: 'Unknown', tag: '????'}]
+  }
+
   return {
     seconds: parseInt(record.time, 10) / 1000,
     url: record.topiclink.indexOf('http') === 0 ? record.topiclink : null,
@@ -48,7 +80,7 @@ function transformRecord (record) {
 
 // Generate a API call to gw2dungeons
 async function gw2DungeonsApi (body) {
-  return await requester.single('http://gw2dungeons.net/records.php', {
+  return await requester.single('http://gw2dungeons.com/records.php', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: buildQueryString(body)

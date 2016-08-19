@@ -18,7 +18,7 @@ describe('gw2dungeons', function () {
     let json = await gw2dungeons.__get__('gw2DungeonsApi')({foo: 'bar', foobar: '1 2'})
 
     expect(json).to.deep.equal({foo: 'bar'})
-    expect(reqMock.lastUrl()).to.equal('http://gw2dungeons.net/records.php')
+    expect(reqMock.lastUrl()).to.equal('http://gw2dungeons.com/records.php')
     expect(reqMock.lastOption()).to.deep.equal({
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -57,15 +57,18 @@ describe('gw2dungeons', function () {
   it('gets the correct records {LIVE}', async () => {
     let records = await gw2dungeons.getDungeonRecords()
     let dungeons = [
+      'Spirit Vale',
+      'Salvation Pass',
+      'Stronghold of the Faithful',
+      'Fractals of the Mists',
       'Ascalonian Catacombs',
-      "Caudecus's Manor",
+      'Caudecus\'s Manor',
       'Twilight Arbor',
-      "Sorrow's Embrace",
+      'Sorrow\'s Embrace',
       'Citadel of Flame',
       'Honor of the Waves',
       'Crucible of Eternity',
-      'The Ruined City of Arah',
-      'Fractals of the Mists'
+      'The Ruined City of Arah'
     ]
 
     expect(Object.keys(records)).to.deep.equal(dungeons)
