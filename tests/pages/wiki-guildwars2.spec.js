@@ -72,7 +72,7 @@ describe('wiki-guildwars2', function () {
     let picture = await wiki.itemPicture('The Bifrost')
 
     expect(picture).to.be.a.string
-    expect(picture).to.contain('http://wiki.guildwars2.com/images/')
+    expect(picture).to.contain('https://wiki.guildwars2.com/images/')
   })
 
   it('gets the correct item image if the gallery entry is missing', async () => {
