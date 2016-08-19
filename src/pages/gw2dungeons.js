@@ -64,7 +64,7 @@ function filterRecords (obj) {
 
 // Transform a record from gw2dungeons to our format
 function transformRecord (record) {
-  if (record.groups.length == 0) {
+  if (record.groups.length === 0) {
     record.groups = [{name: 'Unknown', tag: '????'}]
   }
 
