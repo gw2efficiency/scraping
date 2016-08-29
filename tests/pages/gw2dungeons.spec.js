@@ -18,7 +18,7 @@ describe('gw2dungeons', function () {
     let json = await gw2dungeons.__get__('gw2DungeonsApi')({foo: 'bar', foobar: '1 2'})
 
     expect(json).to.deep.equal({foo: 'bar'})
-    expect(reqMock.lastUrl()).to.equal('http://gw2dungeons.com/records.php')
+    expect(reqMock.lastUrl()).to.equal('http://gw2dungeons.net/records.php')
     expect(reqMock.lastOption()).to.deep.equal({
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},

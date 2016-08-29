@@ -21,7 +21,7 @@ async function getDungeonRecords () {
   let records = {}
 
   // Grab all the info we need from the API
-  let specs = await gw2DungeonsApi({type: 'readData'})
+  let specs = await gw2DungeonsApi({type: 'readData', page: 'Records'})
   let instances = specs.instances
   let paths = specs.paths
   let options = {
@@ -80,7 +80,7 @@ function transformRecord (record) {
 
 // Generate a API call to gw2dungeons
 async function gw2DungeonsApi (body) {
-  return await requester.single('http://gw2dungeons.com/records.php', {
+  return await requester.single('http://gw2dungeons.net/records.php', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: buildQueryString(body)
