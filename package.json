@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "cheerio": "^0.20.0",
+    "gw2e-async-promises": "^1.2.0",
     "gw2e-requester": "^1.0.0"
   },
   "devDependencies": {

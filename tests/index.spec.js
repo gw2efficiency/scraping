@@ -11,7 +11,8 @@ describe('module', () => {
       'itemPicture',
       'getDungeonRecords',
       'achievementLeaderboard',
-      'gemPriceHistory'
+      'gemPriceHistory',
+      'craftingProfessionCost'
     ])
   })
 })

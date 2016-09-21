@@ -43,6 +43,9 @@ let leaderboard = await scraping.achievementLeaderboard()
 
 // Get the gem price history from gw2spidy.com
 let prices = await scraping.gemPriceHistory()
+
+// Get the cost to level professions from gw2crafts.net
+let cost = await scraping.craftingProfessionCost()
 ```
 
 ## Tests
