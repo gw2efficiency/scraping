@@ -61,7 +61,7 @@ describe('gw2official > achievementLeaderboard', function () {
 
   // The official leaderboard is wonky, which is why this test is pretty defensive
   it('gets the achievement leaderboard {LIVE}', async () => {
-    let leaderboard = await achievementLeaderboard()
+    let leaderboard = await achievementLeaderboard(1)
     expect(leaderboard[1].rank).to.equal(2)
     expect(leaderboard[0].regionRank).to.equal(1)
     expect(leaderboard[10].name).to.exist
@@ -69,6 +69,6 @@ describe('gw2official > achievementLeaderboard', function () {
     expect(leaderboard[20].world).to.exist
     expect(leaderboard[30].region).to.exist
     expect(leaderboard[30].region).to.be.oneOf(['eu', 'na'])
-    expect(leaderboard.length).to.be.above(1500)
+    expect(leaderboard.length).to.equal(50)
   })
 })

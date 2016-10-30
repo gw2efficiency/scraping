@@ -38,8 +38,8 @@ scraping.itemPicture('Incinerator').then(...)
 scraping.getDungeonRecords().then(...)
 
 // Get the current achievement leaderboard from guildwars2.com
-// Note: this takes ~40 seconds because of heavy rate limiting
-scraping.achievementLeaderboard().then(...)
+const pages = 40 // Maximum 40 pages, 50 entries per page
+scraping.achievementLeaderboard(pages).then(...)
 
 // Get the gem price history from gw2spidy.com
 scraping.gemPriceHistory().then(...)

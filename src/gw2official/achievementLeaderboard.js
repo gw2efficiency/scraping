@@ -2,9 +2,8 @@ import fetch from 'lets-fetch'
 import cheerio from 'cheerio'
 
 // Get the total achievement leaderboard (top 2000)
-export default async function achievementLeaderboard () {
+export default async function achievementLeaderboard (pages = 40) {
   let regions = ['eu', 'na']
-  let pages = 40
 
   // Generate the request array
   let requests = []
