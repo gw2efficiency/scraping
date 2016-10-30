@@ -15,7 +15,7 @@
     "url": "https://github.com/gw2efficiency/scraping"
   },
   "dependencies": {
-    "cheerio": "^0.20.0",
+    "cheerio": "^0.22.0",
     "lets-fetch": "^2.0.2",
     "promise-control-flow": "^1.2.4"
   },
