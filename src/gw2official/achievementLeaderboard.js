@@ -1,8 +1,8 @@
-const requester = require('gw2e-requester')
-const cheerio = require('cheerio')
+import fetch from 'lets-fetch'
+import cheerio from 'cheerio'
 
 // Get the total achievement leaderboard (top 2000)
-async function achievementLeaderboard () {
+export default async function achievementLeaderboard () {
   let regions = ['eu', 'na']
   let pages = 40
 
@@ -16,8 +16,10 @@ async function achievementLeaderboard () {
 
   // Get all the pages, parse them and concat the results together
   let array = []
-  let content = await requester.many(requests, {type: 'text', waitTime: 300})
-  content.map(html => array = array.concat(parseAchievementPage(html)))
+  let content = await fetch.many(requests, {type: 'text', waitTime: 300})
+  content.map(html => {
+    array = array.concat(parseAchievementPage(html))
+  })
 
   // Calculate the rank for each and order by points
   return cleanupLeaderboardArray(array)
@@ -35,7 +37,10 @@ function cleanupLeaderboardArray (array) {
   })
 
   unique.sort((a, b) => b.points - a.points)
-  unique.map((x, i) => unique[i].rank = i + 1)
+  unique.map((x, i) => {
+    unique[i].rank = i + 1
+  })
+
   return unique
 }
 
@@ -72,5 +77,3 @@ function parseTimestring (string) {
   let date = new Date(string)
   return date.toString()
 }
-
-module.exports = {achievementLeaderboard}

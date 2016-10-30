@@ -1,25 +1,27 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const rewire = require('rewire')
-const reqMock = require('gw2e-requester/mock')
-const gw2dungeons = rewire('../../src/pages/gw2dungeons.js')
+import {expect} from 'chai'
+import fetchMock from 'lets-fetch/mock'
+import getDungeonRecords from '../../src/gw2dungeons/getDungeonRecords.js'
 
-gw2dungeons.__set__('requester', reqMock)
+getDungeonRecords.__set__('fetch', fetchMock)
 
-describe('gw2dungeons', function () {
+describe('gw2dungeons > getDungeonRecords', function () {
   this.timeout(20000)
   beforeEach(() => {
-    reqMock.enableMocking(false)
+    fetchMock.enableMocking(false)
   })
 
   it('builds the correct options for the API call', async () => {
-    reqMock.enableMocking(true)
-    reqMock.addResponse({foo: 'bar'})
-    let json = await gw2dungeons.__get__('gw2DungeonsApi')({foo: 'bar', foobar: '1 2'})
+    fetchMock.enableMocking(true)
+    fetchMock.addResponse({foo: 'bar'})
+    let json = await getDungeonRecords.__get__('gw2DungeonsApi')({
+      foo: 'bar',
+      foobar: '1 2'
+    })
 
     expect(json).to.deep.equal({foo: 'bar'})
-    expect(reqMock.lastUrl()).to.equal('http://gw2dungeons.net/records.php')
-    expect(reqMock.lastOption()).to.deep.equal({
+    expect(fetchMock.lastUrl()).to.equal('http://gw2dungeons.net/records.php')
+    expect(fetchMock.lastOption()).to.deep.equal({
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: 'foo=bar&foobar=1%202'
@@ -27,7 +29,7 @@ describe('gw2dungeons', function () {
   })
 
   it('transforms a record correctly', () => {
-    let record = gw2dungeons.__get__('transformRecord')({
+    let record = getDungeonRecords.__get__('transformRecord')({
       time: '123000',
       topiclink: 'http://test.de',
       groups: [{name: 'Guild', tag: '[TAG]'}]
@@ -41,7 +43,7 @@ describe('gw2dungeons', function () {
   })
 
   it('transforms a record correctly if the topiclink is invalid', () => {
-    let record = gw2dungeons.__get__('transformRecord')({
+    let record = getDungeonRecords.__get__('transformRecord')({
       time: '456000',
       topiclink: 'test',
       groups: [{name: 'Guild', tag: '[TAG]'}]
@@ -55,7 +57,7 @@ describe('gw2dungeons', function () {
   })
 
   it('gets the correct records {LIVE}', async () => {
-    let records = await gw2dungeons.getDungeonRecords()
+    let records = await getDungeonRecords()
     let dungeons = [
       'Spirit Vale',
       'Salvation Pass',

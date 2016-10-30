@@ -1,10 +1,10 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const index = require('../src/index.js')
+import {expect} from 'chai'
+import module from '../src/index.js'
 
 describe('module', () => {
   it('adds all available methods into one module', () => {
-    expect(Object.keys(index)).to.deep.equal([
+    expect(Object.keys(module)).to.deep.equal([
       'claimTicketOffers',
       'dyeCategories',
       'miniSets',

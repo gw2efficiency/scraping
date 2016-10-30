@@ -1,9 +1,9 @@
-const requester = require('gw2e-requester')
-const cheerio = require('cheerio')
-const async = require('gw2e-async-promises')
+import fetch from 'lets-fetch'
+import cheerio from 'cheerio'
+import flow from 'promise-control-flow'
 
 // Get the cost to level crafting professions
-async function craftingProfessionCost () {
+export default async function craftingProfessionCost () {
   const promises = {
     armorsmith: async () => {
       let baseCraft = await getProfessionParts('http://gw2crafts.net/armorcraft.html')
@@ -48,12 +48,12 @@ async function craftingProfessionCost () {
   }
 
   // Return an array of all crafting professions
-  return await async.parallel(promises)
+  return await flow.parallel(promises)
 }
 
 // Get partial data, one per segment
 async function getProfessionParts (url) {
-  let content = await requester.single(url, {type: 'text'})
+  let content = await fetch.single(url, {type: 'text'})
   let $ = cheerio.load(content)
   let costs = []
 
@@ -91,7 +91,7 @@ async function getProfessionParts (url) {
 
 // Get the total cost of a profession
 async function getProfessionTotalCost (url) {
-  let content = await requester.single(url, {type: 'text'})
+  let content = await fetch.single(url, {type: 'text'})
   let $ = cheerio.load(content)
 
   // Get the first defined cost, that's the total cost
@@ -122,5 +122,3 @@ function cleanGoldArray (array) {
   // Copper, Silver + Gold
   return array[0] * 10000 + array[1] * 100 + array[2]
 }
-
-module.exports = {craftingProfessionCost}

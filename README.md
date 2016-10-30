@@ -1,51 +1,51 @@
-# gw2api-scraping
+# scraping
 
-[![Build Status](https://img.shields.io/travis/gw2efficiency/gw2api-scraping.svg?style=flat-square)](https://travis-ci.org/gw2efficiency/gw2api-scraping)
-[![Coverage Status](https://img.shields.io/codecov/c/github/gw2efficiency/gw2api-scraping/master.svg?style=flat-square)](https://codecov.io/github/gw2efficiency/gw2api-scraping)
+[![Build Status](https://img.shields.io/travis/gw2efficiency/scraping.svg?style=flat-square)](https://travis-ci.org/gw2efficiency/scraping)
+[![Coverage Status](https://img.shields.io/codecov/c/github/gw2efficiency/scraping/master.svg?style=flat-square)](https://codecov.io/github/gw2efficiency/scraping)
 
-> Scraping unofficial sites for information the API can't provide.
+> Scraping unofficial sites for game information.
 
 *This is part of [gw2efficiency](https://gw2efficiency.com). Please report all issues in [the central repository](https://github.com/gw2efficiency/issues/issues).*
 
 ## Install
 
 ```
-npm install gw2e-gw2api-scraping
+npm install gw2e-scraping
 ```
 
-This module can be used for Node.js. Theoretically it works in browsers using [Browserify](https://github.com/substack/browserify-handbook#how-node_modules-works), but due to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) most methods are not available.
+This module can be used for Node.js. Theoretically it is usable in browsers using [Browserify](https://github.com/substack/browserify-handbook#how-node_modules-works), but due to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) most methods won't work.
 
 **Requires the [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) to work.**
 
 ## Usage
 
 ```js
-const scraping = require('gw2e-gw2api-scraping')
+import * as scraping from 'gw2e-scraping'
 
 // Get the current offers for claim tickets from wiki.guildwars2.com
-let offers = await scraping.claimTicketOffers()
+scraping.claimTicketOffers().then(...)
 
 // Get the dye categories (materials, sets, colors) from wiki.guildwars2.com
-let categories = await scraping.dyeCategories()
+scraping.dyeCategories().then(...)
 
 // Get the minipet set names from wiki.guildwars2.com
-let sets = await scraping.miniSets()
+scraping.miniSets().then(...)
 
 // Get the picture for an item from wiki.guildwars2.com
-let itemPicture = await scraping.itemPicture('Incinerator')
+scraping.itemPicture('Incinerator').then(...)
 
 // Get the current dungeon records from gw2-dungeons.net
-let records = await scraping.getDungeonRecords()
+scraping.getDungeonRecords().then(...)
 
 // Get the current achievement leaderboard from guildwars2.com
 // Note: this takes ~40 seconds because of heavy rate limiting
-let leaderboard = await scraping.achievementLeaderboard()
+scraping.achievementLeaderboard().then(...)
 
 // Get the gem price history from gw2spidy.com
-let prices = await scraping.gemPriceHistory()
+scraping.gemPriceHistory().then(...)
 
 // Get the cost to level professions from gw2crafts.net
-let cost = await scraping.craftingProfessionCost()
+scraping.craftingProfessionCost().then(...)
 ```
 
 ## Tests
@@ -54,8 +54,7 @@ let cost = await scraping.craftingProfessionCost()
 npm test
 ```
 
-The tests of this module get executed against the live sites instead of mock objects,
-because the structure of the scraped pages could change at any time without notice.
+> **Note:** Some tests of this module get executed against the live sites instead of mock objects, because the structure of the scraped pages could change at any time without notice.
 
 ## Licence
 

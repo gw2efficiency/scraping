@@ -1,13 +1,12 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const rewire = require('rewire')
-const gw2crafts = rewire('../../src/pages/gw2crafts.js')
+import {expect} from 'chai'
+import craftingProfessionCost from '../../src/gw2crafts/craftingProfessionCost.js'
 
-describe('gw2crafts', function () {
+describe('gw2crafts > craftingProfessionCost', function () {
   this.timeout(200000)
 
   it('get the cost of crafting professions {LIVE}', async () => {
-    let cost = await gw2crafts.craftingProfessionCost()
+    let cost = await craftingProfessionCost()
 
     expect(cost).have.all.keys([
       'chef',

@@ -1,5 +1,5 @@
-const requester = require('gw2e-requester')
-const {buildQueryString} = require('../helpers.js')
+import fetch from 'lets-fetch'
+import {buildQueryString} from '../helpers.js'
 
 const whitelist = [
   'Spirit Vale',
@@ -17,7 +17,7 @@ const whitelist = [
 ]
 
 // Get the current record times for dungeon runs
-async function getDungeonRecords () {
+export default async function getDungeonRecords () {
   let records = {}
 
   // Grab all the info we need from the API
@@ -33,10 +33,14 @@ async function getDungeonRecords () {
 
   // Get a map of all instances for resolving ids -> name
   let instanceMap = {}
-  instances.map(x => instanceMap[x.ID] = x.name)
+  instances.map(x => {
+    instanceMap[x.ID] = x.name
+  })
 
   // Generate an object that has all instances inside
-  instances.map(x => records[x.name] = {})
+  instances.map(x => {
+    records[x.name] = {}
+  })
 
   // Add all paths with their records to that object
   let defaultPath = {seconds: null, url: null, guild: {}}
@@ -53,7 +57,7 @@ async function getDungeonRecords () {
 function filterRecords (obj) {
   let result = {}
 
-  for (var key in obj) {
+  for (let key in obj) {
     if (whitelist.indexOf(key) !== -1) {
       result[key] = obj[key]
     }
@@ -80,11 +84,9 @@ function transformRecord (record) {
 
 // Generate a API call to gw2dungeons
 async function gw2DungeonsApi (body) {
-  return await requester.single('http://gw2dungeons.net/records.php', {
+  return await fetch.single('http://gw2dungeons.net/records.php', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: buildQueryString(body)
   })
 }
-
-module.exports = {getDungeonRecords}

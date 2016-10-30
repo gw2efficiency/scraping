@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const helpers = require('../src/helpers.js')
+import {expect} from 'chai'
+import * as helpers from '../src/helpers.js'
 
 describe('helpers', () => {
   describe('buildUrl', () => {
