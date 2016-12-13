@@ -31,30 +31,4 @@ describe('helpers', () => {
       expect(url).to.equal('http://test.io?a=foo%20bar')
     })
   })
-
-  describe('matchAll', () => {
-    let matchAll = helpers.matchAll
-
-    it('handles no matches', () => {
-      let matches = matchAll(/b/g, 'aaa')
-      expect(matches).to.deep.equal([])
-    })
-
-    it('prevents endless loops', () => {
-      expect(() => matchAll(/b/, 'aaa')).to.throw(Error)
-    })
-
-    it('finds all matches', () => {
-      let matches = matchAll(/a/g, 'aaa')
-      expect(matches).to.deep.equal([['a'], ['a'], ['a']])
-    })
-
-    it('finds all submatches', () => {
-      let matches = matchAll(/a(b)(c)(d*)(ef)g/g, 'abcdefg abcge abcdddefg')
-      expect(matches).to.deep.equal([
-        ['abcdefg', 'b', 'c', 'd', 'ef'],
-        ['abcdddefg', 'b', 'c', 'ddd', 'ef']
-      ])
-    })
-  })
 })

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "cheerio": "^0.22.0",
+    "execall": "^1.0.0",
     "lets-fetch": "^2.0.2",
     "promise-control-flow": "^1.2.4"
   },

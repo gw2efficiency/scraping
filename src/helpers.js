@@ -13,20 +13,3 @@ export function buildQueryString (query) {
     .map(k => k + '=' + encodeURIComponent(query[k]))
     .join('&')
 }
-
-// Get all matches of a global regular expression
-export function matchAll (regex, string) {
-  if (regex.flags.indexOf('g') === -1) {
-    throw new Error('The regular expression needs the "g" flag set')
-  }
-
-  let match
-  let matches = []
-  while ((match = regex.exec(string)) !== null) {
-    delete match['index']
-    delete match['input']
-    matches.push(match)
-  }
-
-  return matches
-}
