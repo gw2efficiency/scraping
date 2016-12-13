@@ -1,5 +1,5 @@
 import fetch from 'lets-fetch'
-import {buildQueryString} from '../helpers.js'
+import querystring from 'querystringify'
 
 const whitelist = [
   'Spirit Vale',
@@ -87,6 +87,6 @@ async function gw2DungeonsApi (body) {
   return await fetch.single('http://gw2dungeons.net/records.php', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: buildQueryString(body)
+    body: querystring.stringify(body)
   })
 }
