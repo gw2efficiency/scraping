@@ -43,4 +43,3 @@ export async function getWikiImage (file) {
 
   return imageinfo ? imageinfo[0]['url'] : null
 }
-

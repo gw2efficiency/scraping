@@ -15,8 +15,6 @@ describe('gw2wiki > itemPictures', function () {
 
   it('gets the correct item image {LIVE}', async () => {
     let picture = await itemPicture('The Bifrost')
-
-    expect(picture).to.be.a.string
     expect(picture).to.contain('https://wiki.guildwars2.com/images/')
   })
 

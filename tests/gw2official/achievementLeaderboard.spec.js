@@ -64,10 +64,10 @@ describe('gw2official > achievementLeaderboard', function () {
     let leaderboard = await achievementLeaderboard(1)
     expect(leaderboard[1].rank).to.equal(2)
     expect(leaderboard[0].regionRank).to.equal(1)
-    expect(leaderboard[10].name).to.exist
+    expect(leaderboard[10].name).to.not.equal(undefined)
     expect(leaderboard[0].points).to.be.above(30000)
-    expect(leaderboard[20].world).to.exist
-    expect(leaderboard[30].region).to.exist
+    expect(leaderboard[20].world).to.not.equal(undefined)
+    expect(leaderboard[30].region).to.not.equal(undefined)
     expect(leaderboard[30].region).to.be.oneOf(['eu', 'na'])
     expect(leaderboard.length).to.equal(50)
   })

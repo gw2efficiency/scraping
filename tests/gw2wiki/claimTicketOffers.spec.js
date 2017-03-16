@@ -17,8 +17,8 @@ describe('gw2wiki > claimTicketOffers', function () {
     let offerKeys = Object.keys(offers)
 
     expect(offerKeys.length).to.be.above(10)
-    expect(offerKeys[0]).to.be.a.string
-    expect(offers[offerKeys[0]]).to.be.a.number
+    expect(typeof offerKeys[0]).to.equal('string')
+    expect(typeof offers[offerKeys[0]]).to.equal('number')
     expect(offers[offerKeys[0]]).to.be.above(0)
   })
 })

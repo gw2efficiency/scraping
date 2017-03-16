@@ -77,7 +77,7 @@ describe('gw2dungeons > getDungeonRecords', function () {
     expect(Object.keys(records['Twilight Arbor'])).to.contain('Story')
 
     let story = records['Citadel of Flame']['Story']
-    expect(story.seconds).to.be.a.number
+    expect(typeof story.seconds).to.equal('number')
     expect(story.seconds).to.be.below(500)
     expect(story.seconds).to.be.above(20)
     expect(story.url).to.contain('http')
