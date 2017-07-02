@@ -27,6 +27,8 @@ describe('gw2wiki > dyeCategories', function () {
     expect(Object.keys(sets)).to.contain('Celestial Dye')
     expect(Object.values(sets)).to.contain('Starter dyes')
     expect(sets['Abyss Dye']).to.equal('Rare dyes')
+    expect(sets['Flame Dye']).to.equal('Flame and Frost dyes')
+    expect(sets['Imperial Red Dye']).to.equal('Crimson Lion dyes')
 
     let colors = categories.colors
     expect(Object.keys(colors)).to.contain('Celestial Dye')

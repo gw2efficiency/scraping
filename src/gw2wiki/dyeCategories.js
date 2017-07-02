@@ -24,7 +24,7 @@ export default async function dyeCategories () {
   }
 
   let materials = mapDyeTable('By_Material')
-  let sets = mapDyeTable('By_Set')
+  let sets = {...mapDyeTable('By_Set'), ...mapDyeTable('Exclusive_colors')}
   let colors = mapDyeTable('By_Color')
   return {materials, sets, colors}
 }
