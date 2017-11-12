@@ -11,7 +11,8 @@ export default async function claimTicketOffers () {
 
   let map = {}
   matches.map(x => {
-    map[x[0]] = parseInt(x[1], 10)
+    const name = x[0].replace(/&#39;/g, `'`)
+    map[name] = parseInt(x[1], 10)
   })
 
   // Remove failures
