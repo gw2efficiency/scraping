@@ -6,7 +6,33 @@ export default async function dyeCategories () {
   let page = await getWikiHtml('Dye')
   let $ = cheerio.load(page)
 
-  // Get the dye table after the given ID
+  // Get the dyes in the "Exclusive Colors" table (by dye kit)
+  function mapExclusiveColors () {
+    const table = $('#Exclusive_colors').parent().nextUntil('table').next().children('tr')
+    let kitMap = {}
+
+    table.each((i, row) => {
+      if (i < 2) return
+
+      const columns = $(row).children('td')
+
+      // The second column is the name of the dye kit
+      const kit = $(columns[1]).find('a').attr('title')
+
+      // The first column is the title of dyes
+      const dyes = $(columns[0]).find('a')
+        .map((i, link) => $(link).attr('title')).get()
+        .filter((x, i, self) => self.indexOf(x) === i)
+
+      dyes.forEach(dye => {
+        kitMap[dye] = kit
+      })
+    })
+
+    return {kitMap}
+  }
+
+  // Get the dye table after the given header ID
   function mapDyeTable (id) {
     let map = {}
     let sets = $('#' + id).parent().nextUntil('h3', 'table').find('table')
@@ -23,8 +49,9 @@ export default async function dyeCategories () {
     return map
   }
 
+  const {kitMap} = mapExclusiveColors()
   let materials = mapDyeTable('By_Material')
-  let sets = {...mapDyeTable('By_Set'), ...mapDyeTable('Exclusive_colors')}
+  let sets = {...mapDyeTable('By_Set'), ...kitMap}
   let colors = mapDyeTable('By_Color')
   return {materials, sets, colors}
 }
