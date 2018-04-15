@@ -8,7 +8,7 @@ export default async function dyeCategories () {
 
   // Get the dyes in the "Exclusive Colors" table (by dye kit)
   function mapExclusiveColors () {
-    const table = $('#Exclusive_colors').parent().nextUntil('table').next().children('tr')
+    const table = $('#Exclusive_colors').parent().nextUntil('table').next().find('tr')
     let kitMap = {}
     let birthdayMap = {}
 
@@ -57,6 +57,7 @@ export default async function dyeCategories () {
   }
 
   const {kitMap, birthdayMap} = mapExclusiveColors()
+  console.log(kitMap)
   let materials = mapDyeTable('By_Material')
   let sets = {...mapDyeTable('By_Set'), ...kitMap}
   let colors = mapDyeTable('By_Color')
