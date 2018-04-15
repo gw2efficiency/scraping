@@ -10,6 +10,7 @@ export default async function dyeCategories () {
   function mapExclusiveColors () {
     const table = $('#Exclusive_colors').parent().nextUntil('table').next().children('tr')
     let kitMap = {}
+    let birthdayMap = {}
 
     table.each((i, row) => {
       if (i < 2) return
@@ -24,12 +25,18 @@ export default async function dyeCategories () {
         .map((i, link) => $(link).attr('title')).get()
         .filter((x, i, self) => self.indexOf(x) === i)
 
+      // The third column is the title of the birthday packs
+      const birthdays = $(columns[2]).find('a')
+        .map((i, link) => $(link).attr('title')).get()
+        .filter((x, i, self) => self.indexOf(x) === i)
+
       dyes.forEach(dye => {
         kitMap[dye] = kit
+        birthdayMap[dye] = birthdays
       })
     })
 
-    return {kitMap}
+    return {kitMap, birthdayMap}
   }
 
   // Get the dye table after the given header ID
@@ -49,9 +56,9 @@ export default async function dyeCategories () {
     return map
   }
 
-  const {kitMap} = mapExclusiveColors()
+  const {kitMap, birthdayMap} = mapExclusiveColors()
   let materials = mapDyeTable('By_Material')
   let sets = {...mapDyeTable('By_Set'), ...kitMap}
   let colors = mapDyeTable('By_Color')
-  return {materials, sets, colors}
+  return {materials, sets, colors, birthdays: birthdayMap}
 }

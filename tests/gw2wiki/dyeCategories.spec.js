@@ -16,7 +16,7 @@ describe('gw2wiki > dyeCategories', function () {
     let categories = await dyeCategories()
     let keys = Object.keys(categories)
 
-    expect(keys).to.deep.equal(['materials', 'sets', 'colors'])
+    expect(keys).to.deep.equal(['materials', 'sets', 'colors', 'birthdays'])
 
     let materials = categories.materials
     expect(Object.keys(materials)).to.contain('Celestial Dye')
@@ -34,5 +34,13 @@ describe('gw2wiki > dyeCategories', function () {
     expect(Object.keys(colors)).to.contain('Celestial Dye')
     expect(Object.values(colors)).to.contain('Blue dyes')
     expect(colors['Abyss Dye']).to.equal('Gray dyes')
+
+    let birthdays = categories.birthdays
+    expect(Object.keys(birthdays)).to.contain('Deep Glacial Teal Dye')
+    expect(birthdays['Electro Pink Dye']).to.deep.equal([
+      'Celebratory Dye Pack',
+      'Jubilant Dye Pack'
+    ])
+    expect(birthdays['Enameled Strawberry Dye']).to.deep.equal([])
   })
 })
