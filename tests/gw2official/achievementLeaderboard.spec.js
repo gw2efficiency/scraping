@@ -69,6 +69,6 @@ describe('gw2official > achievementLeaderboard', function () {
     expect(leaderboard[20].world).to.not.equal(undefined)
     expect(leaderboard[30].region).to.not.equal(undefined)
     expect(leaderboard[30].region).to.be.oneOf(['eu', 'na'])
-    expect(leaderboard.length).to.equal(50)
+    expect(leaderboard.length).to.be.above(40)
   })
 })
