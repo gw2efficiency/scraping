@@ -19,7 +19,7 @@
     "execall": "^1.0.0",
     "lets-fetch": "^2.0.2",
     "promise-control-flow": "^1.2.4",
-    "querystringify": "1.0.0"
+    "querystringify": "2.0.0"
   },
   "devDependencies": {
     "abc-environment": "^2.0.0"
