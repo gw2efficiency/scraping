@@ -34,13 +34,6 @@ scraping.miniSets().then(...)
 // Get the picture for an item from wiki.guildwars2.com
 scraping.itemPicture('Incinerator').then(...)
 
-// Get the current dungeon records from gw2-dungeons.net
-scraping.getDungeonRecords().then(...)
-
-// Get the current achievement leaderboard from guildwars2.com
-const pages = 40 // Maximum 40 pages, 50 entries per page
-scraping.achievementLeaderboard(pages).then(...)
-
 // Get the gem price history from gw2spidy.com
 scraping.gemPriceHistory().then(...)
 

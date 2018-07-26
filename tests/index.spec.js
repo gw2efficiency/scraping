@@ -9,8 +9,6 @@ describe('module', () => {
       'dyeCategories',
       'miniSets',
       'itemPicture',
-      'getDungeonRecords',
-      'achievementLeaderboard',
       'gemPriceHistory',
       'craftingProfessionCost'
     ])
