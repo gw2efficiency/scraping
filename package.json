@@ -22,6 +22,6 @@
     "querystringify": "2.0.0"
   },
   "devDependencies": {
-    "abc-environment": "^2.0.0"
+    "abc-environment": "^2.0.3"
   }
 }
