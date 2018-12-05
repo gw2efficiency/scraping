@@ -15,8 +15,8 @@ describe('gw2wiki > miniSets', function () {
   it('gets the correct mini sets {LIVE}', async () => {
     let sets = await miniSets()
 
-    expect(Object.keys(sets)).to.contain('Miniature Orange Tabby Cat')
-    expect(Object.values(sets)).to.contain('Flame and Frost')
+    expect(Object.keys(sets)).to.contain('Mini Orange Tabby Cat')
+    expect(Object.values(sets)).to.contain('Gem Store/Black Lion / Black Lion Chest')
     expect(sets['Mini Ember']).to.equal('Set 3')
   })
 })
