@@ -1,11 +1,20 @@
 import cheerio from 'cheerio'
-import {getWikiHtml} from './helpers.js'
+import { getWikiHtml } from './helpers.js'
 
 // Get the miniature sets
 export default async function miniSets () {
-  let page = await getWikiHtml('Miniature')
-  let $ = cheerio.load(page, {ignoreWhitespace: false})
+  let miniSetsPagesNames = ['Mini_Collection—Set_I', 'Mini_Collection—Set_II',
+    'Mini_Collection—Set_III', 'Miniature']
   let map = {}
+
+  // Create the category string
+  function composeTitleAsPath (mainCategory, subcategory) {
+    if (!subcategory) {
+      return mainCategory
+    } else {
+      return mainCategory + ' / ' + subcategory
+    }
+  }
 
   // Parse a simple table (heading -> all minis)
   function simpleTable (table, setTitle) {
@@ -16,8 +25,8 @@ export default async function miniSets () {
     })
   }
 
-  // Parse a extended table (heading per table row)
-  function extendedTable (table) {
+  // Parse a extended table
+  function extendedTable (table, category) {
     let tableRows = $(table).find('tr')
     let lastTitle
     tableRows.each((i, row) => {
@@ -25,38 +34,47 @@ export default async function miniSets () {
         return
       }
 
+      // If there's a th in the row, it must be a category header, so we save that for title
+      if ($(row).find('th').length === 1) {
+        lastTitle = $(row).find('th').text().trim()
+        return
+      }
+
       // Replace breaks with spaces so we can have nice headings
       $(row).find('br').replaceWith($('<span> </span>'))
 
-      // Get the title and the mini off the row
-      let setTitle = $(row).find('th').text().trim()
+      // Get the mini off the row
       let setMiniature = $(row).find('td').first().find('a').attr('title')
 
-      // If no title is set, use the one of the previous row
-      if (setTitle !== '') {
-        lastTitle = setTitle
-      } else {
-        setTitle = lastTitle
-      }
-
-      map[setMiniature] = setTitle
+      map[setMiniature] = composeTitleAsPath(category, lastTitle)
     })
   }
 
-  // Parse all headings and the tables after them
-  let headings = $('h3 .mw-headline')
-  headings.each((i, heading) => {
-    let setTitle = $(heading).text()
-    let table = $(heading).parent().nextUntil('h3', 'table')
+  let $
+  for (let i = 0; i < miniSetsPagesNames.length; i++) {
+    let page = await getWikiHtml(miniSetsPagesNames[i])
+    $ = cheerio.load(page, { ignoreWhitespace: false })
 
-    // If the table has more than 4 headings, the headings
-    // are in the rows, and we need to parse an extended table
-    if (table.find('th').length === 4) {
-      simpleTable(table, setTitle)
+    if (i < 3) {
+      let table = $('.tpwrapper')
+      simpleTable(table, 'Set ' + (i + 1).toString())
     } else {
-      extendedTable(table)
+      // Parse all headings and the tables after them
+      let headings = $('h4 .mw-headline')
+      headings.each((i, heading) => {
+        let setTitle = $(heading).text()
+        let table = $(heading).parent().nextUntil('h4', 'table')
+
+        // If the table has more than 4 headings, the headings
+        // are in the rows, and we need to parse an extended table
+        if (table.find('th').length === 4) {
+          simpleTable(table, setTitle)
+        } else {
+          extendedTable(table, setTitle)
+        }
+      })
     }
-  })
+  }
 
   return map
 }

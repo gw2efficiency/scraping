@@ -1,4 +1,4 @@
-import {getWikiHtml} from './helpers.js'
+import { getWikiHtml } from './helpers.js'
 import execAll from 'execall'
 
 // Get the current claim ticket offers
