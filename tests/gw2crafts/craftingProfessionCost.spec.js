@@ -1,5 +1,5 @@
 /* eslint-env node, mocha */
-import {expect} from 'chai'
+import { expect } from 'chai'
 import craftingProfessionCost from '../../src/gw2crafts/craftingProfessionCost.js'
 
 describe('gw2crafts > craftingProfessionCost', function () {

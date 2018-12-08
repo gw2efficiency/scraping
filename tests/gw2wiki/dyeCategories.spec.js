@@ -1,5 +1,5 @@
 /* eslint-env node, mocha */
-import {expect} from 'chai'
+import { expect } from 'chai'
 import fetchMock from 'lets-fetch/mock'
 import dyeCategories from '../../src/gw2wiki/dyeCategories.js'
 

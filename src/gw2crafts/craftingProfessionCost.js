@@ -8,52 +8,52 @@ export default async function craftingProfessionCost () {
     armorsmith: async () => {
       let baseCraft = await getProfessionParts('http://gw2crafts.net/armorcraft.html')
       let maxCraft = await getProfessionTotalCost('http://gw2crafts.net/armorcraft_400.html')
-      return {...baseCraft, 500: maxCraft + baseCraft[400]}
+      return { ...baseCraft, 500: maxCraft + baseCraft[400] }
     },
     artificer: async () => {
       let baseCraft = await getProfessionParts('http://gw2crafts.net/artificing.html')
       let maxCraft = await getProfessionTotalCost('http://gw2crafts.net/artificing_400.html')
-      return {...baseCraft, 500: maxCraft + baseCraft[400]}
+      return { ...baseCraft, 500: maxCraft + baseCraft[400] }
     },
     chef: async () => {
       let baseCraft = await getProfessionTotalCost('http://gw2crafts.net/cooking_karma_light.html')
-      return {400: baseCraft}
+      return { 400: baseCraft }
     },
     huntsman: async () => {
       let baseCraft = await getProfessionParts('http://gw2crafts.net/huntsman.html')
       let maxCraft = await getProfessionTotalCost('http://gw2crafts.net/huntsman_400.html')
-      return {...baseCraft, 500: maxCraft + baseCraft[400]}
+      return { ...baseCraft, 500: maxCraft + baseCraft[400] }
     },
     jeweler: async () => {
-      return await getProfessionParts('http://gw2crafts.net/jewelcraft.html')
+      return getProfessionParts('http://gw2crafts.net/jewelcraft.html')
     },
     leatherworker: async () => {
       let baseCraft = await getProfessionParts('http://gw2crafts.net/leatherworking.html')
       let maxCraft = await getProfessionTotalCost('http://gw2crafts.net/leatherworking_400.html')
-      return {...baseCraft, 500: maxCraft + baseCraft[400]}
+      return { ...baseCraft, 500: maxCraft + baseCraft[400] }
     },
     scribe: async () => {
-      return await getProfessionParts('http://gw2crafts.net/scribe.html')
+      return getProfessionParts('http://gw2crafts.net/scribe.html')
     },
     tailor: async () => {
       let baseCraft = await getProfessionParts('http://gw2crafts.net/tailor.html')
       let maxCraft = await getProfessionTotalCost('http://gw2crafts.net/tailor_400.html')
-      return {...baseCraft, 500: maxCraft + baseCraft[400]}
+      return { ...baseCraft, 500: maxCraft + baseCraft[400] }
     },
     weaponsmith: async () => {
       let baseCraft = await getProfessionParts('http://gw2crafts.net/weaponcraft.html')
       let maxCraft = await getProfessionTotalCost('http://gw2crafts.net/weaponcraft_400.html')
-      return {...baseCraft, 500: maxCraft + baseCraft[400]}
+      return { ...baseCraft, 500: maxCraft + baseCraft[400] }
     }
   }
 
   // Return an array of all crafting professions
-  return await flow.parallel(promises)
+  return flow.parallel(promises)
 }
 
 // Get partial data, one per segment
 async function getProfessionParts (url) {
-  let content = await fetch.single(url, {type: 'text'})
+  let content = await fetch.single(url, { type: 'text' })
   let $ = cheerio.load(content)
   let costs = []
 
@@ -91,7 +91,7 @@ async function getProfessionParts (url) {
 
 // Get the total cost of a profession
 async function getProfessionTotalCost (url) {
-  let content = await fetch.single(url, {type: 'text'})
+  let content = await fetch.single(url, { type: 'text' })
   let $ = cheerio.load(content)
 
   // Get the first defined cost, that's the total cost

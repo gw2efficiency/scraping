@@ -4,7 +4,7 @@ export function generateWikiMarkup (content) {
       pages: {
         123: {
           title: 'Controls',
-          revisions: [{'*': content}]
+          revisions: [{ '*': content }]
         }
       }
     }
@@ -13,7 +13,7 @@ export function generateWikiMarkup (content) {
 
 export function generateWikiImage (url) {
   if (!url) {
-    return {query: {pages: {123: {title: 'File:Kudzu.jpg'}}}}
+    return { query: { pages: { 123: { title: 'File:Kudzu.jpg' } } } }
   }
 
   return {
@@ -21,7 +21,7 @@ export function generateWikiImage (url) {
       pages: {
         123: {
           title: 'File:Kudzu.jpg',
-          imageinfo: [{url: url}]
+          imageinfo: [{ url: url }]
         }
       }
     }

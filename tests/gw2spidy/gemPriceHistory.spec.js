@@ -1,5 +1,5 @@
 /* eslint-env node, mocha */
-import {expect} from 'chai'
+import { expect } from 'chai'
 import gemPriceHistory from '../../src/gw2spidy/gemPriceHistory.js'
 
 describe('gw2spidy > gemPriceHistory', function () {

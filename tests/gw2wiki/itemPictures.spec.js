@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
-import {expect} from 'chai'
+import { expect } from 'chai'
 import fetchMock from 'lets-fetch/mock'
-import {generateWikiMarkup, generateWikiImage} from './_mock.js'
+import { generateWikiMarkup, generateWikiImage } from './_mock.js'
 import itemPicture from '../../src/gw2wiki/itemPicture.js'
 
 itemPicture.__set__('fetch', fetchMock)

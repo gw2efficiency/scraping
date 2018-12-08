@@ -1,5 +1,5 @@
 import cheerio from 'cheerio'
-import {getWikiHtml} from './helpers.js'
+import { getWikiHtml } from './helpers.js'
 
 // Get the dye categories
 export default async function dyeCategories () {
@@ -36,7 +36,7 @@ export default async function dyeCategories () {
       })
     })
 
-    return {kitMap, birthdayMap}
+    return { kitMap, birthdayMap }
   }
 
   // Get the dye table after the given header ID
@@ -56,9 +56,9 @@ export default async function dyeCategories () {
     return map
   }
 
-  const {kitMap, birthdayMap} = mapExclusiveColors()
+  const { kitMap, birthdayMap } = mapExclusiveColors()
   let materials = mapDyeTable('By_Material')
-  let sets = {...mapDyeTable('By_Set'), ...kitMap}
+  let sets = { ...mapDyeTable('By_Set'), ...kitMap }
   let colors = mapDyeTable('By_Color')
-  return {materials, sets, colors, birthdays: birthdayMap}
+  return { materials, sets, colors, birthdays: birthdayMap }
 }

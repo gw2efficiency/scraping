@@ -1,12 +1,12 @@
 import fetch from 'lets-fetch'
 import querystring from 'querystringify'
 
-export default {getWikiHtml, getWikiMarkup, getWikiImage}
+export default { getWikiHtml, getWikiMarkup, getWikiImage }
 
 // Get the wiki html for the given title
 export async function getWikiHtml (title) {
   let url = 'http://wiki.guildwars2.com/wiki/' + encodeURIComponent(title)
-  return await fetch.single(url, {type: 'text'})
+  return fetch.single(url, { type: 'text' })
 }
 
 // Get the wiki markup for the given title
