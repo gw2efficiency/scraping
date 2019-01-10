@@ -10,7 +10,8 @@ describe('module', () => {
       'miniSets',
       'itemPicture',
       'gemPriceHistory',
-      'craftingProfessionCost'
+      'craftingProfessionCost',
+      'blackLionStatuette'
     ])
   })
 })
