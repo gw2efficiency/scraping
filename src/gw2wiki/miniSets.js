@@ -56,8 +56,10 @@ export default async function miniSets () {
     $ = cheerio.load(page, { ignoreWhitespace: false })
 
     if (i < 3) {
-      let table = $('.tpwrapper')
-      simpleTable(table, 'Set ' + (i + 1).toString())
+      let tables = $('.item.table')
+      tables.each((i, table) => {
+        simpleTable(table, 'Set ' + (i + 1).toString())
+      })
     } else {
       // Parse all headings and the tables after them
       let headings = $('h4 .mw-headline')
