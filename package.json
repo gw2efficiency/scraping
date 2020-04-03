@@ -1,6 +1,6 @@
 {
   "name": "gw2e-scraping",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Scraping unofficial sites for information the API can't provide.",
   "main": "./build/index.js",
   "scripts": {
