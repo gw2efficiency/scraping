@@ -3,7 +3,7 @@ import execAll from 'execall'
 
 // Get the current claim ticket offers
 export default async function claimTicketOffers () {
-  let page = await getWikiHtml('Black Lion Weapons Specialist (The Vaults)')
+  let page = await getWikiHtml('Template:Inventory/black_lion_claim_ticket')
 
   // Find all items sold for black lion tickets with their costs
   let regex = /<tr[\s\S]*?<a href="[^"]*" title="([^"]*)">[\s\S]*?class="inline-icon">(\d*)(&nbsp;|&#160;)*<a [^>]* title="Black Lion Claim Ticket"[\s\S]*?<\/tr>/gi
