@@ -41,6 +41,6 @@ describe('gw2wiki > dyeCategories', function () {
       'Celebratory Dye Pack',
       'Jubilant Dye Pack'
     ])
-    expect(birthdays['Enameled Strawberry Dye']).to.deep.equal([])
+    expect(birthdays['Enameled Strawberry Dye']).to.deep.equal(['Dedicated Dye Kit'])
   })
 })
