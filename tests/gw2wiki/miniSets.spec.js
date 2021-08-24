@@ -17,6 +17,8 @@ describe('gw2wiki > miniSets', function () {
 
     expect(Object.keys(sets)).to.contain('Mini Orange Tabby Cat')
     expect(Object.values(sets)).to.contain('Gem Store/Black Lion / Black Lion Chest')
-    expect(sets['Mini Ember']).to.equal('Set 3')
+    expect(sets['Mini Krait Slaver']).to.equal('Set 1')
+    expect(sets['Mini Zojja']).to.equal('Set 2')
+    expect(sets['Mini Hazmat Suit']).to.equal('Set 3')
   })
 })

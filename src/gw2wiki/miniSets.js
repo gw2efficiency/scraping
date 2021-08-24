@@ -57,7 +57,7 @@ export default async function miniSets () {
 
     if (i < 3) {
       let tables = $('.item.table')
-      tables.each((i, table) => {
+      tables.each((_, table) => {
         simpleTable(table, 'Set ' + (i + 1).toString())
       })
     } else {
