@@ -56,7 +56,7 @@ export default async function miniSets () {
     $ = cheerio.load(page, { ignoreWhitespace: false })
 
     if (i < 3) {
-      let tables = $('.item.table')
+      let tables = $('.sortable.table')
       tables.each((_, table) => {
         simpleTable(table, 'Set ' + (i + 1).toString())
       })
