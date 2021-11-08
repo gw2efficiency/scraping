@@ -47,8 +47,22 @@ export default async function craftingProfessionCost () {
     }
   }
 
-  // Return an array of all crafting professions
-  return flow.parallel(promises)
+  // Generate an array of all crafting professions
+  const professions = await flow.parallel(promises)
+
+  // Sanity check that we parsed the prices correctly, so we don't accidentally assume
+  // leveling Scribe to 500 takes 6 million gold.
+  for (const profession of Object.keys(professions)) {
+    for (const level of Object.keys(professions[profession])) {
+      const value = professions[profession][level]
+
+      if (value > 2500000) {
+        throw new Error(`Failed parsing price for ${profession} ${level}: ${value}`)
+      }
+    }
+  }
+
+  return professions
 }
 
 // Get partial data, one per segment
