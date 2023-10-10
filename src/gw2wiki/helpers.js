@@ -47,3 +47,15 @@ export async function getWikiImage (file) {
 
   return imageinfo ? imageinfo[0]['url'] : null
 }
+
+/**
+ * Get SMW query result.
+ *
+ * @param {string} query
+ * @returns {Promise<{ query: { results: Record<string, { printouts: Record<string, (string | { fulltext: string  })[]> }> } }>}
+ */
+export function getSmwQueryResult (query) {
+  const url = `https://wiki.guildwars2.com/api.php?action=ask&query=${encodeURIComponent(query)}&format=json`
+
+  return fetch.single(url, { headers })
+}

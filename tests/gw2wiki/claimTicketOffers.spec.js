@@ -13,12 +13,16 @@ describe('gw2wiki > claimTicketOffers', function () {
   })
 
   it('gets the correct claim ticket offers {LIVE}', async () => {
-    let offers = await claimTicketOffers()
-    let offerKeys = Object.keys(offers)
+    const offers = await claimTicketOffers()
+    const offerEntries = Object.entries(offers)
 
-    expect(offerKeys.length).to.be.above(10)
-    expect(typeof offerKeys[0]).to.equal('string')
-    expect(typeof offers[offerKeys[0]]).to.equal('number')
-    expect(offers[offerKeys[0]]).to.be.above(0)
+    expect(offerEntries.length).to.be.above(10)
+
+    Object.entries(offers).forEach(([item, cost]) => {
+      expect(typeof item).to.equal('string')
+      expect(typeof cost).to.equal('number')
+      expect(cost).to.be.not.NaN
+      expect(cost).to.be.above(0)
+    })
   })
 })
