@@ -56,7 +56,6 @@ export async function getWikiImage (file) {
  */
 export function getSmwQueryResult (query) {
   const url = `https://wiki.guildwars2.com/api.php?action=ask&query=${encodeURIComponent(query)}&format=json`
-  console.log(url)
 
   return fetch.single(url, { headers })
 }
