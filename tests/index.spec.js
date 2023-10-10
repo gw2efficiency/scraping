@@ -9,7 +9,6 @@ describe('module', () => {
       'dyeCategories',
       'miniSets',
       'itemPicture',
-      'gemPriceHistory',
       'craftingProfessionCost',
       'blackLionStatuette'
     ])

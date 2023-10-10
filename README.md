@@ -34,9 +34,6 @@ scraping.miniSets().then(...)
 // Get the picture for an item from wiki.guildwars2.com
 scraping.itemPicture('Incinerator').then(...)
 
-// Get the gem price history from gw2spidy.com
-scraping.gemPriceHistory().then(...)
-
 // Get the cost to level professions from gw2crafts.net
 scraping.craftingProfessionCost().then(...)
 ```

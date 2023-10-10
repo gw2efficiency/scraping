@@ -21,7 +21,7 @@ describe('gw2wiki > blackLionStatuette', function () {
     Object.entries(offers).forEach(([item, cost]) => {
       expect(typeof item).to.equal('string')
       expect(typeof cost).to.equal('number')
-      expect(cost).to.be.not.NaN
+      expect(Number.isNaN(cost)).to.equal(false)
       expect(cost).to.be.above(0)
     })
   })
