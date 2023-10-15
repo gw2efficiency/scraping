@@ -4,9 +4,14 @@ import { getSmwQueryResult } from './helpers.js'
 export default async function blackLionStatuette () {
   const result = await getSmwQueryResult('[[Has vendor::Black Lion Statuette]][[Has item cost.Has item currency::Black Lion Statuette]]|?Sells item=item|?Has item cost=value')
 
-  const map = Object.values(result.query.results).map(data => {
-    return [data.printouts['item'][0].fulltext, parseInt(data.printouts['value'][0]['Has item value'].item[0])]
+  const map = {}
+
+  Object.values(result.query.results).forEach(data => {
+    const key = data.printouts['item'][0].fulltext
+    const value = parseInt(data.printouts['value'][0]['Has item value'].item[0])
+
+    map[key] = value
   })
 
-  return Object.fromEntries(map)
+  return map
 }
