@@ -25,6 +25,9 @@ export default async function dyeCategories () {
         .map((i, link) => $(link).attr('title')).get()
         .filter((x, i, self) => self.indexOf(x) === i)
 
+      // Change name of Highland Dye to match filters
+      dyes[dyes.findIndex(x => x === 'Highland Dye')] = 'Highlands Dye'
+
       // The third column is the title of the birthday packs
       const birthdays = $(columns[2]).find('a')
         .map((i, link) => $(link).attr('title')).get()
